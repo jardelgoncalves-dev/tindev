@@ -2,8 +2,7 @@ import { Schema, model } from 'mongoose'
 
 const DevSchema = new Schema({
   name: {
-    type: String,
-    required: true
+    type: String
   },
   user: {
     type: String,
@@ -24,6 +23,13 @@ const DevSchema = new Schema({
   }]
 }, {
   timestamps: true
+})
+
+DevSchema.pre('save', function (next) {
+  if (!this.name) {
+    this.name = this.user
+  }
+  next()
 })
 
 export default model('Dev', DevSchema)
