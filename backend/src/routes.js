@@ -5,6 +5,7 @@ import DislikeController from './controllers/DislikeController'
 
 const routes = express.Router()
 
+routes.get('/dev', DevController.index)
 routes.post('/dev', DevController.store)
 routes.post('/dev/:devId/likes', LikeController.store)
 routes.post('/dev/:devId/dislikes', DislikeController.store)
