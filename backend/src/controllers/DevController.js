@@ -24,14 +24,18 @@ export default {
       return res.json(userExists)
     }
 
-    const response = await api.get(username)
-    const { name, bio, avatar_url: avatar } = response.data
-    const dev = await Dev.create({
-      name,
-      user: username,
-      bio,
-      avatar
-    })
+    try {
+      const response = await api.get(username)
+      const { name, bio, avatar_url: avatar } = response.data
+      const dev = await Dev.create({
+        name,
+        user: username,
+        bio,
+        avatar
+      })
+    } catch (err) {
+      return res.status(404).json({ error: 'Usuário não possui conta no github' })
+    }
 
     return res.json(dev)
   }
