@@ -33,10 +33,9 @@ export default {
         bio,
         avatar
       })
+      return res.json(dev)
     } catch (err) {
       return res.status(404).json({ error: 'Usuário não possui conta no github' })
     }
-
-    return res.json(dev)
   }
 }
