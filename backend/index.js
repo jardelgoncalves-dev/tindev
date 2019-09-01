@@ -1,5 +1,5 @@
 import app from './src/app'
 
-app.listen(app.get('port'), () => {
-  console.log(`app is running on port ${app.get('port')}`)
+app.listen(3333, () => {
+  console.log('app is running on port 3333')
 })
