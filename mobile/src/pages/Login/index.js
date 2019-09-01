@@ -34,7 +34,7 @@ export default function Login ({ navigation }) {
       const response = await api.post('/dev', { username })
       const { _id } = response.data
       await AsyncStorage.setItem('user', _id)
-      navigation.navigate('Main', { _id })
+      navigation.navigate('Main', { user: _id })
       setError('')
     } catch (err) {
       setError('Usuário não possui conta no github')
